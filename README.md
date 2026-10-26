@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+##ENTER YOUR NAME: S Madhumitha
+##ENTER YOUR REGISTER NO:212225040217
 <H3>EX. NO.1</H3>
-<H3>DATE</H3>
+##DATE:26-10-2026
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
@@ -37,11 +37,95 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+~~~
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+~~~
+
+
+~~~
+df=pd.read_csv('/content/Data_to_Transform.csv')
+print(df)
+~~~
+
+
+
+~~~
+x=df.iloc[:,:-1].values
+print(x)
+
+~~~
+
+
+
+~~~
+y=df.iloc[:,-1].values
+print(y)
+~~~
+
+
+
+~~~
+print(df.isnull().sum())
+~~~
+
+
+
+~~~
+df.fillna(df.mean().round(1),inplace=True)
+print(df.isnull().sum())
+y=df.iloc[:,-1].values
+print(y)
+~~~
+
+
+
+~~~
+df.duplicated()
+~~~
+
+
+
+~~~
+print(df['Moderate Positive Skew'].describe())
+~~~
+
+
+~~~
+scaler=MinMaxScaler()
+df1=pd.DataFrame(scaler.fit_transform(df))
+print(df1)
+~~~
+
+
+
+~~~
+X_train,X_test,y_train,y_test=train_test_split(x,y,test_size=0.2)
+print(X_train)
+print(len(X_train))
+print(X_test)
+print(len(X_test))
+~~~
+
+
+
+
+
+
+
+
 
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+<img width="1920" height="1020" alt="Screenshot 2026-10-26 143255" src="https://github.com/user-attachments/assets/8edddc70-31a0-4e04-aeac-00884a04e98f" />
+<img width="1920" height="1020" alt="Screenshot 2026-10-26 143311" src="https://github.com/user-attachments/assets/6ecf818a-7daa-459e-833e-a6634154ffec" />
+<img width="1920" height="1020" alt="Screenshot 2026-10-26 143320" src="https://github.com/user-attachments/assets/d6377ce7-5c5f-4844-bfc5-84051956c843" />
+<img width="1920" height="1020" alt="Screenshot 2026-10-26 143330" src="https://github.com/user-attachments/assets/3bed32c0-2578-424e-bb94-3985eb137897" />
+<img width="1920" height="1020" alt="Screenshot 2026-10-26 143339" src="https://github.com/user-attachments/assets/6b206b83-0c4d-4833-a7fc-ec6bc11bd405" />
+
 
 
 ## RESULT:
